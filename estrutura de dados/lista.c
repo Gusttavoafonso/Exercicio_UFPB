@@ -17,6 +17,7 @@ char inserir_fim(lista*, int);
 void limpar_lista(lista*);
 int menu();
 void mostrar_inf(lista*);
+void remover_inicio(lista*);
 void remover_fim(lista*);
 
 void criar_lista(lista* l){
@@ -75,6 +76,24 @@ void mostrar_inf(lista* l) {
             printf("O %d item da lista é %d\n", i, l->dados[i]);
     }
 }
+
+
+void remover_inicio(lista* l) {
+    if (esta_vazia(l)) {
+        puts("A lista está vazia, não é possível remover.");
+        return;
+    }
+
+    // Desloca todos os elementos uma posição para a frente
+    for (int i = 0; i < l->controle; i++) {
+        l->dados[i] = l->dados[i + 1];
+    }
+
+    // Atualiza o controle para refletir a remoção
+    l->controle -= 1;
+    l->dados[l->controle + 1] = 0; // Opcional, mas ajuda a evitar dados órfãos
+}
+
 
 void remover_fim(lista* l) {
     if(esta_vazia(l))
