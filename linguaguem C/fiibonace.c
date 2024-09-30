@@ -1,3 +1,5 @@
+#include<stdlib.h>
+
 int Finonace(int n){
 
   int  ele1 , ele2, elenovo;
