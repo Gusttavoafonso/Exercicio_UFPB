@@ -75,16 +75,37 @@ int remover_menor(struct Pilha* p) {
 
 
 
-struct Pilha* ordenar_pilha(struct Pilha* p) {
-    struct Pilha* pilha_ordenada = cria_pilha();
-    
-    // Enquanto a pilha original não estiver vazia
-    while (!pilha_vazia(p)) {
-        int menor = remover_menor(p);
-        empilhar(pilha_ordenada, menor);
+// Função para criar uma cópia da pilha original
+Pilha* copyStack(Pilha *originalTop) {
+    if (originalTop == NULL) {
+        return NULL;
     }
-    
-    return pilha_ordenada;
+
+    // Passo 1: Usamos uma pilha temporária para armazenar os elementos na ordem original
+    Node *tempStack = NULL;
+    Node *copyTop = NULL;
+    Node *current = originalTop;
+
+    // Desempilhamos a pilha original e empilhamos na pilha temporária
+    while (current != NULL) {
+        push(&tempStack, current->data);
+        current = current->next;
+    }
+
+    // Passo 2: Agora empilhamos os elementos da pilha temporária na nova pilha
+    while (!isEmpty(tempStack)) {
+        push(&copyTop, pop(&tempStack));
+    }
+
+    return copyTop;
+}
+
+// Função para imprimir os elementos da pilha
+void printStack(Node *top) {
+    while (top != NULL) {
+        printf("%d\n", top->data);
+        top = top->next;
+    }
 }
 
 
@@ -113,3 +134,4 @@ int main() {
 
     return 0;
 }
+
