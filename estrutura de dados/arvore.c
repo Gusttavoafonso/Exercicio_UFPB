@@ -132,7 +132,7 @@ int altura_arvore( Raiz* r){
         return -1; 
     }
     else{
-       int  a =1 + altura_arvore(r->esq);
+       int  a = 1 + altura_arvore(r->esq);
        int  b = 1 + altura_arvore(r->dir);
         if(a > b){return a;}
         else{return b;}
