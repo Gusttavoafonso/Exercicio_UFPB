@@ -1,16 +1,21 @@
 
 
-
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
     # Define a função geral da sequência
-    def a(n):
+    '''def a(n):
         denominador = (n**2) + (5*n) - 6
         if denominador == 0:
             raise ZeroDivisionError(f"Divisão por zero para n = {n}")
-        return (4 * (n**2) - (3 * n)) / denominador
+        return (4 * (n**2) - (3 * n)) / denominador'''
+    def a(n):
+        return (2 ** n) / math.factorial(n)
+    '''def a(n):
+        return 2 ** (1 - 1 / (2 ** n))'''
+
 
     # Entrada dos limites do intervalo
     nmin = int(input("Digite o valor de nmin (natural): "))
