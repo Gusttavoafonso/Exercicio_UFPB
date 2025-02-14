@@ -1,8 +1,12 @@
 
-
+import numpy as np
+from scipy.integrate import quad
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+
+def func(x):
+    return np.exp(-x)
 
 def main():
     # Define a função geral da sequência
@@ -11,10 +15,13 @@ def main():
         if denominador == 0:
             raise ZeroDivisionError(f"Divisão por zero para n = {n}")
         return (4 * (n**2) - (3 * n)) / denominador'''
-    def a(n):
-        return (2 ** n) / math.factorial(n)
+    '''def a(n):
+        return (2 ** n) / math.factorial(n)'''
     '''def a(n):
         return 2 ** (1 - 1 / (2 ** n))'''
+    def a(n):
+        result, _ = quad(func, 1, n)  # Calcula a integral de a até n
+        return result
 
 
     # Entrada dos limites do intervalo
